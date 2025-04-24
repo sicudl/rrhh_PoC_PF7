@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9208af3e-fdc0-45bc-9c0e-ac7093158282" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ModifyService.xsd" MetadataType="Schema" ID="ea80814a-d5b7-41ab-b24e-aba395fe65be" SourceId="1" SourceUrl="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?xsd=MetadatosDocumentoEni.xsd" />
+    <MetadataFile FileName="ModifyService.wsdl" MetadataType="Wsdl" ID="c31ea78c-fc3a-4a7e-8a19-2aa94347c9b9" SourceId="1" SourceUrl="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?wsdl" />
+    <MetadataFile FileName="ModifyService1.xsd" MetadataType="Schema" ID="b2687b76-0604-4d8d-9ca1-31c158e296ad" SourceId="1" SourceUrl="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?xsd=WebServiceTypes.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:type="urn:juntadeandalucia:cice:pfirma:type:v2.0" xmlns:pfirma="urn:juntadeandalucia:cice:pfirma:modify:v2.0" xmlns:request="urn:juntadeandalucia:cice:pfirma:modify:request:v2.0" name="ModifyService" targetNamespace="urn:juntadeandalucia:cice:pfirma:modify:v2.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:juntadeandalucia:cice:pfirma:modify:request:v2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?xsd=WebServiceTypes.xsd" namespace="urn:juntadeandalucia:cice:pfirma:type:v2.0" />
+      <xsd:element name="createRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="request" type="type:request" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="request" type="type:request" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+            <xsd:element name="removingMessage" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removeRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+            <xsd:element name="document" type="type:document" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="documentId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="documentId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="documentId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertSigners">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+            <xsd:element name="signLine" type="xsd:int" />
+            <xsd:element name="signerList" type="type:signerList" />
+            <xsd:element name="signLineType" type="type:signLineType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertSignersResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteSigners">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authentication" type="type:authentication" />
+            <xsd:element name="requestId" type="xsd:string" />
+            <xsd:element minOccurs="0" name="signLineNumber" nillable="true" type="xsd:int" />
+            <xsd:element name="signerList" type="type:signerList" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteSignersResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="updateRequestResponse">
+    <wsdl:part name="updateRequestResponse" element="request:updateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRequestResponse">
+    <wsdl:part name="deleteRequestResponse" element="request:deleteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertDocument">
+    <wsdl:part name="insertDocument" element="request:insertDocument" />
+  </wsdl:message>
+  <wsdl:message name="insertSigners">
+    <wsdl:part name="insertSigners" element="request:insertSigners" />
+  </wsdl:message>
+  <wsdl:message name="deleteSignersResponse">
+    <wsdl:part name="deleteSignersResponse" element="request:deleteSignersResponse" />
+  </wsdl:message>
+  <wsdl:message name="createRequest">
+    <wsdl:part name="createRequest" element="request:createRequest" />
+  </wsdl:message>
+  <wsdl:message name="createRequestResponse">
+    <wsdl:part name="createRequestResponse" element="request:createRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendRequestResponse">
+    <wsdl:part name="sendRequestResponse" element="request:sendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRequest">
+    <wsdl:part name="updateRequest" element="request:updateRequest" />
+  </wsdl:message>
+  <wsdl:message name="insertDocumentResponse">
+    <wsdl:part name="insertDocumentResponse" element="request:insertDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendRequest">
+    <wsdl:part name="sendRequest" element="request:sendRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteSigners">
+    <wsdl:part name="deleteSigners" element="request:deleteSigners" />
+  </wsdl:message>
+  <wsdl:message name="deleteRequest">
+    <wsdl:part name="deleteRequest" element="request:deleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocument">
+    <wsdl:part name="deleteDocument" element="request:deleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="removeRequest">
+    <wsdl:part name="removeRequest" element="request:removeRequest" />
+  </wsdl:message>
+  <wsdl:message name="removeRequestResponse">
+    <wsdl:part name="removeRequestResponse" element="request:removeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocumentResponse">
+    <wsdl:part name="deleteDocumentResponse" element="request:deleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="pfirmaException">
+    <wsdl:part name="pfirmaException" element="type:exceptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="insertSignersResponse">
+    <wsdl:part name="insertSignersResponse" element="request:insertSignersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ModifyService">
+    <wsdl:operation name="createRequest">
+      <wsdl:input name="createRequest" message="pfirma:createRequest" />
+      <wsdl:output name="createRequestResponse" message="pfirma:createRequestResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRequest">
+      <wsdl:input name="updateRequest" message="pfirma:updateRequest" />
+      <wsdl:output name="updateRequestResponse" message="pfirma:updateRequestResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRequest">
+      <wsdl:input name="deleteRequest" message="pfirma:deleteRequest" />
+      <wsdl:output name="deleteRequestResponse" message="pfirma:deleteRequestResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="removeRequest">
+      <wsdl:input name="removeRequest" message="pfirma:removeRequest" />
+      <wsdl:output name="removeRequestResponse" message="pfirma:removeRequestResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="sendRequest">
+      <wsdl:input name="sendRequest" message="pfirma:sendRequest" />
+      <wsdl:output name="sendRequestResponse" message="pfirma:sendRequestResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="insertDocument">
+      <wsdl:input name="insertDocument" message="pfirma:insertDocument" />
+      <wsdl:output name="insertDocumentResponse" message="pfirma:insertDocumentResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <wsdl:input name="deleteDocument" message="pfirma:deleteDocument" />
+      <wsdl:output name="deleteDocumentResponse" message="pfirma:deleteDocumentResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="insertSigners">
+      <wsdl:input name="insertSigners" message="pfirma:insertSigners" />
+      <wsdl:output name="insertSignersResponse" message="pfirma:insertSignersResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSigners">
+      <wsdl:input name="deleteSigners" message="pfirma:deleteSigners" />
+      <wsdl:output name="deleteSignersResponse" message="pfirma:deleteSignersResponse" />
+      <wsdl:fault name="pfirmaException" message="pfirma:pfirmaException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ModifyServiceSoapBinding" type="pfirma:ModifyService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createRequestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateRequestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deleteRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteRequestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="removeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removeRequestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendRequest">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="sendRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendRequestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertDocument">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="insertDocument">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertDocumentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deleteDocument">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteDocumentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertSigners">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="insertSigners">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertSignersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSigners">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deleteSigners">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteSignersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="pfirmaException">
+        <soap:fault use="literal" name="pfirmaException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ModifyService">
+    <wsdl:port name="ModifyServicePort" binding="pfirma:ModifyServiceSoapBinding">
+      <soap:address location="https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
