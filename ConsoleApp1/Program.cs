@@ -506,8 +506,17 @@ namespace ConsoleApp1
             string RequestID = "";
             PF7.createRequestResponse Resp = null;
 
+
+            var binding = new CustomBinding();
+            var mtomEncoder = new MtomMessageEncodingBindingElement(MessageVersion.Soap11, Encoding.UTF8);
+            var transport = new HttpsTransportBindingElement(); // O HttpTransportBindingElement si no usas HTTPS
+            binding.Elements.Add(mtomEncoder);
+            binding.Elements.Add(transport);
+            var endpoint = new System.ServiceModel.EndpointAddress("https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?wsdl");
             try
             {
+             
+                    var client = new PF7.ModifyServiceClient(binding, endpoint);
                 Resp = CCC.createRequest(RequestHashNormal);
                 RequestID = Resp.requestId;
             }
