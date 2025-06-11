@@ -17,3 +17,4 @@ C:\Compartida\Repo_Projectes\rrhh_PoC_PF7\ConsoleApp1\bin\Debug\ConsoleApp1.exe
 C:\Compartida\Repo_Projectes\rrhh_PoC_PF7\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
 C:\Compartida\Repo_Projectes\rrhh_PoC_PF7\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Compartida\Repo_Projectes\rrhh_PoC_PF7\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Compartida\Repo_Projectes\rrhh_PoC_PF7\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache

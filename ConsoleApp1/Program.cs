@@ -383,20 +383,20 @@ namespace ConsoleApp1
             PF7.request req = new PF7.request();
             req.application = "PFIRMA_PERSONAL";
             req.documentList = docsAsignar;
-            req.reference = " de " + " és una prova simple";
+            req.reference = " de " + " és una prova simple (PoC test v7 )";
             //"DIR3." + System.DateTime.Now.Millisecond.ToString() + "." + System.DateTime.Now.Year;
             if (req.reference.Length > 30)
                 req.reference = req.reference.Substring(0, 30);
 
-            req.subject = "DescripcioDocument";
-            req.text = "DescripcioDocument";
+            req.subject = "PoC test v7 DescripcioDocument";
+            req.text = "PoC test v7 DescripcioDocument";
 
             //"Texto comentario de la firma automatizada desde capa servicios";
             DateTime DataLimit = System.DateTime.Now;
             req.fentry = System.DateTime.Now;
-            if (DataLimit != null)
-                req.fexpiration = DataLimit;
-            else
+            /*if (DataLimit != null)
+                req.fexpiration =5 DataLimit;
+            else*/
                 req.fexpiration = System.DateTime.Now.AddDays(60);
 
             req.fexpirationSpecified = true;
@@ -417,7 +417,7 @@ namespace ConsoleApp1
                 signant.identifier = strDNIsignant;
                 req.signLineList[linea] = new PF7.signLine();
 
-                if (ModoVistiPlauConfig != null)
+              /*  if (ModoVistiPlauConfig != null)
                 {
                     //és un signant NO-càrrec?
                     if (strDNIsignant != DNI1 && strDNIsignant != DNI2)
@@ -437,6 +437,7 @@ namespace ConsoleApp1
                     }
                 }
                 else
+                */
                     req.signLineList[linea].type = PF7.signLineType.FIRMA;
 
                 req.signLineList[linea].typeSpecified = true;
@@ -446,7 +447,7 @@ namespace ConsoleApp1
                 linea++;
             }
 
-#if USERREMITENT
+
             PF7.user UsuariRemitent = new PF7.user();
             UsuariRemitent.identifier = "PFIRMA_PERSONAL";
             UsuariRemitent.name = "App de";
@@ -455,9 +456,8 @@ namespace ConsoleApp1
 
             req.remitterList = new PF7.user[1];
             req.remitterList[0] = UsuariRemitent;
-#endif
 
-#if LISTAAVISOS
+
             req.noticeList = new PF7.state[3];
             req.noticeList[0] = new PF7.state();
             req.noticeList[0].identifier = "FIRMADO";
@@ -465,7 +465,7 @@ namespace ConsoleApp1
             req.noticeList[1].identifier = "DEVUELTO";
             req.noticeList[2] = new PF7.state();
             req.noticeList[2].identifier = "CADUCADO";
-#endif
+
             if (true)
                 req.signType = PF7.signType.CASCADA;
             else
@@ -496,9 +496,9 @@ namespace ConsoleApp1
             CR.authentication = pfAuth;
 
 
-            PF7.createRequest RequestHashNormal = new PF7.createRequest();
-            RequestHashNormal.authentication = pfAuth;
-            RequestHashNormal.request = req;
+            PF7.createRequest PeticionFirma = new PF7.createRequest();
+            PeticionFirma.authentication = pfAuth;
+            PeticionFirma.request = req;
 
 
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls | System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Ssl3;
@@ -514,11 +514,17 @@ namespace ConsoleApp1
             binding.Elements.Add(transport);
             var endpoint = new System.ServiceModel.EndpointAddress("https://v5-ae-portasignatures7-preprod.udl.cat/pf/servicesv2/ModifyService?wsdl");
             try
-            {
-             
-                    var client = new PF7.ModifyServiceClient(binding, endpoint);
-                Resp = CCC.createRequest(RequestHashNormal);
-                RequestID = Resp.requestId;
+            {             
+                var client = new PF7.ModifyServiceClient(binding, endpoint);
+                PF7.createRequestResponse Respuesta = null;
+                Respuesta= client.createRequest(PeticionFirma);
+                string IdentificadorPeticionFirma1Documento = Respuesta.requestId;
+     
+                PF7.sendRequest PeticionFinalaEnviar= new PF7.sendRequest();
+                PeticionFinalaEnviar.requestId = IdentificadorPeticionFirma1Documento;
+                PeticionFinalaEnviar.authentication = pfAuth;
+                PF7.sendRequestResponse respostaFinal=
+                client.sendRequest(PeticionFinalaEnviar);
             }
             catch (Exception error)
             {
